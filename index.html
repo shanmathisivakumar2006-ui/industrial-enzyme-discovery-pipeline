@@ -1,1 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Industrial Enzyme Discovery Pipeline</title>
+
+    <meta name="description"
+          content="Computational pipeline for in silico genomic DNA library construction and industrial enzyme discovery.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🧬 Enzyme Discovery
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#home">Home</a>
+            <a href="#overview">Overview</a>
+            <a href="#module1">Module 1</a>
+            <a href="#module2">Module 2</a>
+            <a href="#module3">Module 3</a>
+            <a href="#results">Results</a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     HERO / HOME
+========================================================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            BIOTECHNOLOGY CAPSTONE PROJECT
+        </div>
+
+        <h1>
+            Computational Pipeline for In Silico Genomic DNA Library
+            Construction and Industrial Enzyme Discovery
+        </h1>
+
+        <p class="hero-description">
+
+            A computational workflow for microbial genome retrieval,
+            5-kb genomic DNA library construction, protein-coding gene
+            prediction, functional screening, gene–fragment mapping,
+            and structural characterization.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#workflow" class="primary-button">
+                View Working Model
+            </a>
+
+            <a href="#overview" class="secondary-button">
+                Explore Project
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECT OVERVIEW
+========================================================= -->
+
+<section id="overview" class="section">
+
+    <div class="section-heading">
+
+        <span>01</span>
+
+        <h2>
+            Project Overview
+        </h2>
+
+    </div>
+
+
+    <div class="overview-grid">
+
+
+        <!-- AIM -->
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                🎯
+            </div>
+
+            <h3>
+                Aim
+            </h3>
+
+            <p>
+
+                To develop an in-silico computational pipeline for
+                constructing a genomic DNA library and identifying
+                potential industrial enzyme candidates from microbial
+                genomes.
+
+            </p>
+
+        </div>
+
+
+        <!-- OBJECTIVES -->
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                🔬
+            </div>
+
+            <h3>
+                Objectives
+            </h3>
+
+            <ul>
+
+                <li>
+                    Retrieve complete microbial genomes from NCBI.
+                </li>
+
+                <li>
+                    Construct genomic DNA libraries using 5-kb fragments.
+                </li>
+
+                <li>
+                    Predict protein-coding genes using Prodigal.
+                </li>
+
+                <li>
+                    Obtain GFF3 and predicted protein FASTA outputs.
+                </li>
+
+                <li>
+                    Map predicted genes to genomic library fragments.
+                </li>
+
+                <li>
+                    Functionally screen candidate proteins.
+                </li>
+
+                <li>
+                    Characterize selected enzyme candidates structurally.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WORKING MODEL
+========================================================= -->
+
+<section id="workflow" class="section dark-section">
+
+    <div class="section-heading">
+
+        <span>02</span>
+
+        <h2>
+            Computational Working Model
+        </h2>
+
+    </div>
+
+
+    <p class="section-introduction">
+
+        The complete computational workflow connects genome retrieval
+        with genomic library construction, gene prediction, functional
+        screening and structural characterization.
+
+    </p>
+
+
+    <div class="workflow">
+
+
+        <!-- STEP 1 -->
+
+        <div class="workflow-step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <div class="step-icon">
+                🧬
+            </div>
+
+            <h3>
+                Genome Retrieval
+            </h3>
+
+            <p>
+                NCBI
+            </p>
+
+            <small>
+                Genome FASTA
+            </small>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <!-- STEP 2 -->
+
+        <div class="workflow-step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <div class="step-icon">
+                ✂️
+            </div>
+
+            <h3>
+                5-kb Library
+            </h3>
+
+            <p>
+                Google Colab
+            </p>
+
+            <small>
+                Biopython
+            </small>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <!-- STEP 3 -->
+
+        <div class="workflow-step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <div class="step-icon">
+                🧪
+            </div>
+
+            <h3>
+                Gene Prediction
+            </h3>
+
+            <p>
+                Prodigal
+            </p>
+
+            <small>
+                GFF3 + Protein FASTA
+            </small>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <!-- STEP 4 -->
+
+        <div class="workflow-step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <div class="step-icon">
+                🔎
+            </div>
+
+            <h3>
+                Functional Screening
+            </h3>
+
+            <p>
+                BLASTp / InterPro
+            </p>
+
+            <small>
+                Functional evidence
+            </small>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <!-- STEP 5 -->
+
+        <div class="workflow-step">
+
+            <div class="step-number">
+                05
+            </div>
+
+            <div class="step-icon">
+                🔗
+            </div>
+
+            <h3>
+                Gene Mapping
+            </h3>
+
+            <p>
+                Coordinate Mapping
+            </p>
+
+            <small>
+                Gene ↔ Fragment
+            </small>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <!-- STEP 6 -->
+
+        <div class="workflow-step">
+
+            <div class="step-number">
+                06
+            </div>
+
+            <div class="step-icon">
+                🧩
+            </div>
+
+            <h3>
+                Structural Analysis
+            </h3>
+
+            <p>
+                Candidate Selection
+            </p>
+
+            <small>
+                Predicted Structure
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MICROORGANISMS
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span>03</span>
+
+        <h2>
+            Selected Microorganisms
+        </h2>
+
+    </div>
+
+
+    <p class="section-introduction">
+
+        The computational workflow is applied to four selected
+        microorganisms representing diverse thermophilic and
+        extremophilic bacterial groups.
+
+    </p>
+
+
+    <div class="organism-grid">
+
+
+        <div class="organism-card">
+
+            <div class="organism-number">
+                01
+            </div>
+
+            <h3>
+                <i>Thermotoga maritima</i>
+            </h3>
+
+            <p>
+                MSB8
+            </p>
+
+            <span>
+                Thermophilic bacterium
+            </span>
+
+        </div>
+
+
+        <div class="organism-card">
+
+            <div class="organism-number">
+                02
+            </div>
+
+            <h3>
+                <i>Rhodothermus marinus</i>
+            </h3>
+
+            <p>
+                R-10
+            </p>
+
+            <span>
+                Thermophilic bacterium
+            </span>
+
+        </div>
+
+
+        <div class="organism-card">
+
+            <div class="organism-number">
+                03
+            </div>
+
+            <h3>
+                <i>Alicyclobacillus acidocaldarius</i>
+            </h3>
+
+            <p>
+                DSM 446
+            </p>
+
+            <span>
+                Acidothermophilic bacterium
+            </span>
+
+        </div>
+
+
+        <div class="organism-card">
+
+            <div class="organism-number">
+                04
+            </div>
+
+            <h3>
+                <i>Thermotoga neapolitana</i>
+            </h3>
+
+            <p>
+                DSM 4359
+            </p>
+
+            <span>
+                Thermophilic bacterium
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODULE 1
+========================================================= -->
+
+<section id="module1" class="section module-section">
+
+    <div class="section-heading">
+
+        <span>04</span>
+
+        <h2>
+            Module 1 — Genomic Library Construction
+        </h2>
+
+    </div>
+
+
+    <div class="module-layout">
+
+
+        <div class="module-content">
+
+            <h3>
+                Workflow
+            </h3>
+
+            <ol class="process-list">
+
+                <li>
+                    <strong>Genome retrieval</strong>
+                    <br>
+                    Complete microbial genome sequences are obtained
+                    from the NCBI genome database.
+                </li>
+
+                <li>
+                    <strong>Genome preparation</strong>
+                    <br>
+                    The downloaded FASTA/FNA sequence is uploaded
+                    to Google Colab.
+                </li>
+
+                <li>
+                    <strong>5-kb fragmentation</strong>
+                    <br>
+                    Biopython is used to divide the genome into
+                    consecutive fragments of approximately 5,000 bp.
+                </li>
+
+                <li>
+                    <strong>FASTA library generation</strong>
+                    <br>
+                    Each fragment is assigned a unique identifier
+                    and saved as a genomic library FASTA file.
+                </li>
+
+                <li>
+                    <strong>Quality check</strong>
+                    <br>
+                    Fragment count, total sequence length and
+                    fragment size are recorded.
+                </li>
+
+            </ol>
+
+        </div>
+
+
+        <div class="output-card">
+
+            <h3>
+                Module 1 Output
+            </h3>
+
+            <div class="output-item">
+
+                <span>
+                    Input
+                </span>
+
+                <strong>
+                    Genome .FNA
+                </strong>
+
+            </div>
+
+
+            <div class="output-item">
+
+                <span>
+                    Fragment size
+                </span>
+
+                <strong>
+                    5,000 bp
+                </strong>
+
+            </div>
+
+
+            <div class="output-item">
+
+                <span>
+                    Output
+                </span>
+
+                <strong>
+                    Library .FASTA
+                </strong>
+
+            </div>
+
+
+            <div class="output-item">
+
+                <span>
+                    Tools
+                </span>
+
+                <strong>
+                    NCBI + Colab + Biopython
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="screenshot-placeholder">
+
+        <div>
+            📸
+        </div>
+
+        <h3>
+            Recommended Screenshot
+        </h3>
+
+        <p>
+            Add your Google Colab Biopython code and the generated
+            5-kb FASTA library screenshot here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODULE 2
+========================================================= -->
+
+<section id="module2" class="section light-section">
+
+    <div class="section-heading">
+
+        <span>05</span>
+
+        <h2>
+            Module 2 — Functional Screening
+        </h2>
+
+    </div>
+
+
+    <div class="three-cards">
+
+
+        <!-- GENE PREDICTION -->
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🧬
+            </div>
+
+            <h3>
+                1. Gene Prediction
+            </h3>
+
+            <p>
+
+                The complete genome is analysed using Prodigal
+                to identify protein-coding sequences.
+
+            </p>
+
+            <div class="mini-output">
+                GFF3
+            </div>
+
+        </article>
+
+
+        <!-- PROTEIN -->
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🧪
+            </div>
+
+            <h3>
+                2. Protein Prediction
+            </h3>
+
+            <p>
+
+                Predicted coding sequences are translated into
+                protein sequences.
+
+            </p>
+
+            <div class="mini-output">
+                Protein FASTA
+            </div>
+
+        </article>
+
+
+        <!-- SCREENING -->
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                3. Functional Screening
+            </h3>
+
+            <p>
+
+                Candidate proteins are compared with known
+                proteins and functional domains.
+
+            </p>
+
+            <div class="mini-output">
+                Enzyme Candidates
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- MODULE 2 PROCESS -->
+
+    <div class="module-process">
+
+        <div>
+            <span>01</span>
+            Complete Genome
+        </div>
+
+        <b>↓</b>
+
+        <div>
+            <span>02</span>
+            Prodigal
+        </div>
+
+        <b>↓</b>
+
+        <div>
+            <span>03</span>
+            GFF3 + Protein FASTA
+        </div>
+
+        <b>↓</b>
+
+        <div>
+            <span>04</span>
+            Functional Screening
+        </div>
+
+        <b>↓</b>
+
+        <div>
+            <span>05</span>
+            Shortlisted Proteins
+        </div>
+
+    </div>
+
+
+    <!-- MODULE 2 RESULT TABLE -->
+
+    <div class="table-container">
+
+        <h3>
+            Module 2 Result Format
+        </h3>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Microorganism
+                    </th>
+
+                    <th>
+                        CDS / Genes
+                    </th>
+
+                    <th>
+                        Proteins
+                    </th>
+
+                    <th>
+                        GFF3
+                    </th>
+
+                    <th>
+                        Protein FASTA
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        <i>T. maritima</i> MSB8
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <i>R. marinus</i> R-10
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <i>A. acidocaldarius</i> DSM 446
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <i>T. neapolitana</i> DSM 4359
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        Actual value
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                    <td>
+                        ✓
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <p class="table-note">
+
+            ⚠ Replace "Actual value" with the numbers obtained from
+            your own Prodigal analysis.
+
+        </p>
+
+    </div>
+
+
+    <div class="screenshot-placeholder">
+
+        <div>
+            📸
+        </div>
+
+        <h3>
+            Recommended Screenshots
+        </h3>
+
+        <p>
+
+            Add your Prodigal settings/output, GFF3 output and
+            predicted protein FASTA screenshots here.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODULE 3
+========================================================= -->
+
+<section id="module3" class="section module-section">
+
+    <div class="section-heading">
+
+        <span>06</span>
+
+        <h2>
+            Module 3 — Structural Characterization &
+            Computational Pipeline Development
+        </h2>
+
+    </div>
+
+
+    <div class="module-layout">
+
+
+        <div class="module-content">
+
+            <h3>
+                Final Computational Stage
+            </h3>
+
+            <ol class="process-list">
+
+                <li>
+
+                    <strong>
+                        Candidate selection
+                    </strong>
+
+                    <br>
+
+                    Select high-priority proteins from the
+                    functional screening stage.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Gene–fragment mapping
+                    </strong>
+
+                    <br>
+
+                    Match GFF3 gene coordinates with the
+                    5-kb genomic library fragments.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Protein characterization
+                    </strong>
+
+                    <br>
+
+                    Examine predicted protein length, domains
+                    and functional annotations.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Structural prediction
+                    </strong>
+
+                    <br>
+
+                    Submit selected protein sequences to an
+                    appropriate online structure-prediction resource.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Candidate ranking
+                    </strong>
+
+                    <br>
+
+                    Prioritize candidates according to functional
+                    evidence and structural features.
+
+                </li>
+
+            </ol>
+
+        </div>
+
+
+        <div class="final-output-card">
+
+            <div class="structure-icons">
+                🧬 → 🧩 → 🧊
+            </div>
+
+            <h3>
+                Final Output
+            </h3>
+
+            <p>
+
+                Candidate protein
+
+                <br>
+
+                ↓
+
+                <br>
+
+                Functional evidence
+
+                <br>
+
+                ↓
+
+                <br>
+
+                Predicted 3D structure
+
+                <br>
+
+                ↓
+
+                <br>
+
+                <strong>
+                    Prioritized industrial enzyme candidate
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="mapping-box">
+
+        <h3>
+            Gene–Fragment Mapping Concept
+        </h3>
+
+        <div class="mapping-flow">
+
+            <div>
+                <strong>
+                    5-kb Fragment
+                </strong>
+
+                <br>
+
+                Fragment 001
+            </div>
+
+            <div class="mapping-arrow">
+                ↔
+            </div>
+
+            <div>
+                <strong>
+                    GFF3 CDS
+                </strong>
+
+                <br>
+
+                CDS coordinates
+            </div>
+
+            <div class="mapping-arrow">
+                ↔
+            </div>
+
+            <div>
+                <strong>
+                    Protein
+                </strong>
+
+                <br>
+
+                Predicted enzyme
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="screenshot-placeholder">
+
+        <div>
+            📸
+        </div>
+
+        <h3>
+            Recommended Module 3 Images
+        </h3>
+
+        <p>
+
+            Add your gene–fragment mapping output,
+            candidate protein result and predicted 3D
+            protein structure screenshot here.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESULTS DASHBOARD
+========================================================= -->
+
+<section id="results" class="section dark-section">
+
+    <div class="section-heading">
+
+        <span>07</span>
+
+        <h2>
+            Results Dashboard
+        </h2>
+
+    </div>
+
+
+    <p class="section-introduction">
+
+        The dashboard summarizes the major computational outputs
+        generated throughout the three modules.
+
+    </p>
+
+
+    <div class="statistics-grid">
+
+
+        <div class="stat-card">
+
+            <span>
+                Target Fragment
+            </span>
+
+            <strong>
+                5 kb
+            </strong>
+
+            <small>
+                Genomic library size
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Genome Input
+            </span>
+
+            <strong>
+                .FNA
+            </strong>
+
+            <small>
+                NCBI genome sequence
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Gene Output
+            </span>
+
+            <strong>
+                GFF3
+            </strong>
+
+            <small>
+                Prodigal annotation
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Protein Output
+            </span>
+
+            <strong>
+                .FAA
+            </strong>
+
+            <small>
+                Predicted proteins
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- SIMPLE GRAPH -->
+
+    <div class="graph-card">
+
+        <h3>
+            Computational Pipeline Reduction
+        </h3>
+
+        <p class="graph-description">
+
+            Conceptual visualization showing how the dataset is
+            progressively narrowed toward high-priority candidates.
+
+        </p>
+
+
+        <div class="bar-row">
+
+            <label>
+                Genome Data
+            </label>
+
+            <div class="bar-background">
+                <div class="bar-fill" style="width:100%">
+                    100%
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="bar-row">
+
+            <label>
+                5-kb Library
+            </label>
+
+            <div class="bar-background">
+                <div class="bar-fill" style="width:75%">
+                    75%
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="bar-row">
+
+            <label>
+                Predicted Proteins
+            </label>
+
+            <div class="bar-background">
+                <div class="bar-fill" style="width:55%">
+                    55%
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="bar-row">
+
+            <label>
+                Candidate Proteins
+            </label>
+
+            <div class="bar-background">
+                <div class="bar-fill" style="width:25%">
+                    25%
+                </div>
+            </div>
+
+        </div>
+
+
+        <p class="warning">
+
+            ⚠ This is an illustrative graph.
+            Replace the percentages with your actual project results.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SIGNIFICANCE
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span>08</span>
+
+        <h2>
+            Project Significance
+        </h2>
+
+    </div>
+
+
+    <div class="three-cards">
+
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                ⚙️
+            </div>
+
+            <h3>
+                Systematic
+            </h3>
+
+            <p>
+
+                Provides a reproducible computational workflow
+                for analysing microbial genomes.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                🧪
+            </div>
+
+            <h3>
+                Enzyme Discovery
+            </h3>
+
+            <p>
+
+                Helps prioritize proteins with potential
+                industrial enzyme functions.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                📈
+            </div>
+
+            <h3>
+                Scalable
+            </h3>
+
+            <p>
+
+                The same workflow can be applied to additional
+                microbial genomes.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONCLUSION
+========================================================= -->
+
+<section class="section conclusion-section">
+
+    <div class="conclusion">
+
+        <div class="section-heading">
+
+            <span>09</span>
+
+            <h2>
+                Conclusion
+            </h2>
+
+        </div>
+
+
+        <p>
+
+            The developed computational pipeline integrates
+            genomic library construction, gene prediction,
+            functional screening, gene–fragment mapping and
+            structural characterization.
+
+        </p>
+
+
+        <p>
+
+            This workflow provides a systematic approach for
+            identifying and prioritizing potential industrial
+            enzyme candidates from microbial genomes before
+            experimental validation.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TOOLS
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span>10</span>
+
+        <h2>
+            Tools Used
+        </h2>
+
+    </div>
+
+
+    <div class="tools-grid">
+
+
+        <div class="tool-card">
+
+            <strong>
+                NCBI
+            </strong>
+
+            <span>
+                Genome retrieval
+            </span>
+
+        </div>
+
+
+        <div class="tool-card">
+
+            <strong>
+                Google Colab
+            </strong>
+
+            <span>
+                Online computational environment
+            </span>
+
+        </div>
+
+
+        <div class="tool-card">
+
+            <strong>
+                Biopython
+            </strong>
+
+            <span>
+                5-kb genome fragmentation
+            </span>
+
+        </div>
+
+
+        <div class="tool-card">
+
+            <strong>
+                Prodigal
+            </strong>
+
+            <span>
+                Protein-coding gene prediction
+            </span>
+
+        </div>
+
+
+        <div class="tool-card">
+
+            <strong>
+                BLASTp
+            </strong>
+
+            <span>
+                Protein similarity screening
+            </span>
+
+        </div>
+
+
+        <div class="tool-card">
+
+            <strong>
+                InterPro
+            </strong>
+
+            <span>
+                Protein domain/function analysis
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     REFERENCES
+========================================================= -->
+
+<section class="section references">
+
+    <div class="section-heading">
+
+        <span>11</span>
+
+        <h2>
+            References
+        </h2>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            National Center for Biotechnology Information (NCBI)
+            Genome Database.
+        </li>
+
+        <li>
+            Hyatt et al. Prodigal: prokaryotic gene recognition
+            and translation initiation site identification.
+        </li>
+
+        <li>
+            Cock et al. Biopython: freely available Python tools
+            for computational molecular biology and bioinformatics.
+        </li>
+
+        <li>
+            NCBI BLAST — sequence similarity search resources.
+        </li>
+
+        <li>
+            InterPro — protein sequence analysis and classification.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            🧬
+            <strong>
+                Industrial Enzyme Discovery Pipeline
+            </strong>
+        </div>
+
+        <p>
+            Computational Biotechnology Capstone Project
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
