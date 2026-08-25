@@ -1,286 +1,583 @@
 /* =========================================================
    INDUSTRIAL ENZYME DISCOVERY PIPELINE
-   Website Interactions
+   script.js
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    /* -----------------------------------------------------
-       Smooth navigation
-    ----------------------------------------------------- */
+/* =========================================================
+   1. ENZYME CANDIDATE DATA
+========================================================= */
 
-    const navLinks = document.querySelectorAll('a[href^="#"]');
+const enzymeData = [
+    {
+        organism: "T. maritima MSB8",
+        protein: "TM_ORF_001",
+        enzyme: "Xylanase",
+        evidence: "Homology/domain-supported candidate",
+        application: "Pulp & Paper"
+    },
+    {
+        organism: "T. maritima MSB8",
+        protein: "TM_ORF_002",
+        enzyme: "Alpha-Amylase",
+        evidence: "Functional annotation candidate",
+        application: "Starch Processing"
+    },
+    {
+        organism: "T. maritima MSB8",
+        protein: "TM_ORF_003",
+        enzyme: "Beta-Xylosidase",
+        evidence: "Carbohydrate-active enzyme candidate",
+        application: "Biomass Conversion"
+    },
 
-    navLinks.forEach(function (link) {
-        link.addEventListener("click", function (event) {
+    {
+        organism: "R. marinus R-10",
+        protein: "RM_ORF_001",
+        enzyme: "Xylanase",
+        evidence: "Homology/domain-supported candidate",
+        application: "Pulp & Paper"
+    },
+    {
+        organism: "R. marinus R-10",
+        protein: "RM_ORF_002",
+        enzyme: "Cellulase",
+        evidence: "Functional annotation candidate",
+        application: "Biofuel Production"
+    },
+    {
+        organism: "R. marinus R-10",
+        protein: "RM_ORF_003",
+        enzyme: "Alginate Lyase",
+        evidence: "Functional annotation candidate",
+        application: "Biomass Processing"
+    },
 
-            const targetId = this.getAttribute("href");
+    {
+        organism: "A. acidocaldarius DSM 446",
+        protein: "AA_ORF_001",
+        enzyme: "Glycosidase",
+        evidence: "Functional annotation candidate",
+        application: "Food Biotechnology"
+    },
+    {
+        organism: "A. acidocaldarius DSM 446",
+        protein: "AA_ORF_002",
+        enzyme: "Amylolytic Enzyme",
+        evidence: "Domain-supported candidate",
+        application: "Starch Processing"
+    },
+    {
+        organism: "A. acidocaldarius DSM 446",
+        protein: "AA_ORF_003",
+        enzyme: "Proteolytic Enzyme",
+        evidence: "Functional annotation candidate",
+        application: "Industrial Biotechnology"
+    },
 
-            if (targetId && targetId !== "#") {
-                const target = document.querySelector(targetId);
+    {
+        organism: "T. neapolitana DSM 4359",
+        protein: "TN_ORF_001",
+        enzyme: "Xylanase",
+        evidence: "Published enzyme evidence",
+        application: "Pulp & Paper"
+    },
+    {
+        organism: "T. neapolitana DSM 4359",
+        protein: "TN_ORF_002",
+        enzyme: "Endoglucanase",
+        evidence: "Functional annotation candidate",
+        application: "Biomass Conversion"
+    },
+    {
+        organism: "T. neapolitana DSM 4359",
+        protein: "TN_ORF_003",
+        enzyme: "Beta-Glucosidase",
+        evidence: "Functional annotation candidate",
+        application: "Biofuel Production"
+    }
+];
 
-                if (target) {
-                    event.preventDefault();
 
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }
-            }
-        });
-    });
+/* =========================================================
+   2. ORGANISM SUMMARY
+========================================================= */
 
+const organismCounts = {};
 
-    /* -----------------------------------------------------
-       Active navigation link
-    ----------------------------------------------------- */
+enzymeData.forEach(item => {
 
-    const sections = document.querySelectorAll("section[id]");
-    const navigationLinks = document.querySelectorAll(".nav-links a");
-
-    function updateActiveNavigation() {
-
-        let currentSection = "";
-
-        sections.forEach(function (section) {
-
-            const sectionTop = section.offsetTop - 150;
-            const sectionHeight = section.offsetHeight;
-
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionTop + sectionHeight
-            ) {
-                currentSection = section.getAttribute("id");
-            }
-
-        });
-
-        navigationLinks.forEach(function (link) {
-
-            link.classList.remove("active");
-
-            if (
-                currentSection &&
-                link.getAttribute("href") === "#" + currentSection
-            ) {
-                link.classList.add("active");
-            }
-
-        });
-
+    if (!organismCounts[item.organism]) {
+        organismCounts[item.organism] = 0;
     }
 
-    window.addEventListener("scroll", updateActiveNavigation);
+    organismCounts[item.organism]++;
 
-    updateActiveNavigation();
+});
 
 
-    /* -----------------------------------------------------
-       Scroll reveal animation
-    ----------------------------------------------------- */
+/* =========================================================
+   3. APPLICATION SUMMARY
+========================================================= */
 
-    const revealElements = document.querySelectorAll(
-        ".info-card, .organism-card, .feature-card, .tool-card, .workflow-step, .stat-card"
-    );
+const applicationCounts = {};
 
-    const revealObserver = new IntersectionObserver(
-        function (entries) {
+enzymeData.forEach(item => {
 
-            entries.forEach(function (entry) {
+    if (!applicationCounts[item.application]) {
+        applicationCounts[item.application] = 0;
+    }
 
-                if (entry.isIntersecting) {
+    applicationCounts[item.application]++;
 
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
+});
 
-                    revealObserver.unobserve(entry.target);
+
+/* =========================================================
+   4. CREATE ORGANISM CHART
+========================================================= */
+
+const enzymeChartElement =
+    document.getElementById("enzymeChart");
+
+if (enzymeChartElement) {
+
+    new Chart(enzymeChartElement, {
+
+        type: "bar",
+
+        data: {
+
+            labels: Object.keys(organismCounts),
+
+            datasets: [{
+
+                label: "Candidate Enzymes",
+
+                data: Object.values(organismCounts),
+
+                borderWidth: 1
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    display: true
+                },
+
+                title: {
+
+                    display: true,
+
+                    text:
+                        "Candidate Enzymes Identified by Organism"
 
                 }
 
-            });
+            },
 
-        },
-        {
-            threshold: 0.12
-        }
-    );
+            scales: {
 
+                y: {
 
-    revealElements.forEach(function (element) {
+                    beginAtZero: true,
 
-        element.style.opacity = "0";
-        element.style.transform = "translateY(20px)";
-        element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                    ticks: {
+                        stepSize: 1
+                    },
 
-        revealObserver.observe(element);
+                    title: {
 
-    });
+                        display: true,
 
+                        text:
+                            "Number of Candidate Enzymes"
 
-    /* -----------------------------------------------------
-       Statistics counter animation
-    ----------------------------------------------------- */
+                    }
 
-    const counters = document.querySelectorAll("[data-count]");
+                },
 
-    function animateCounter(element) {
+                x: {
 
-        const target = parseInt(
-            element.getAttribute("data-count"),
-            10
-        );
+                    title: {
 
-        if (isNaN(target)) {
-            return;
-        }
+                        display: true,
 
-        let current = 0;
+                        text:
+                            "Organism"
 
-        const duration = 1200;
-        const steps = 60;
-        const increment = target / steps;
+                    }
 
-        const timer = setInterval(function () {
-
-            current += increment;
-
-            if (current >= target) {
-
-                current = target;
-
-                clearInterval(timer);
+                }
 
             }
 
-            element.textContent = Math.floor(current);
-
-        }, duration / steps);
-
-    }
-
-
-    const counterObserver = new IntersectionObserver(
-        function (entries) {
-
-            entries.forEach(function (entry) {
-
-                if (entry.isIntersecting) {
-
-                    animateCounter(entry.target);
-
-                    counterObserver.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.5
         }
-    );
-
-
-    counters.forEach(function (counter) {
-
-        counterObserver.observe(counter);
 
     });
 
-
-    /* -----------------------------------------------------
-       Back to top button
-    ----------------------------------------------------- */
-
-    const backToTop = document.createElement("button");
-
-    backToTop.innerHTML = "↑";
-
-    backToTop.setAttribute(
-        "aria-label",
-        "Back to top"
-    );
-
-    backToTop.style.position = "fixed";
-    backToTop.style.bottom = "25px";
-    backToTop.style.right = "25px";
-    backToTop.style.width = "45px";
-    backToTop.style.height = "45px";
-    backToTop.style.borderRadius = "50%";
-    backToTop.style.border = "none";
-    backToTop.style.background = "#37c99b";
-    backToTop.style.color = "#06241c";
-    backToTop.style.fontSize = "22px";
-    backToTop.style.fontWeight = "bold";
-    backToTop.style.cursor = "pointer";
-    backToTop.style.display = "none";
-    backToTop.style.zIndex = "999";
-
-    document.body.appendChild(backToTop);
+}
 
 
-    window.addEventListener("scroll", function () {
+/* =========================================================
+   5. CREATE APPLICATION CHART
+========================================================= */
 
-        if (window.scrollY > 500) {
+const applicationChartElement =
+    document.getElementById("applicationChart");
 
-            backToTop.style.display = "block";
+if (applicationChartElement) {
+
+    new Chart(applicationChartElement, {
+
+        type: "bar",
+
+        data: {
+
+            labels:
+                Object.keys(applicationCounts),
+
+            datasets: [{
+
+                label:
+                    "Candidate Enzymes",
+
+                data:
+                    Object.values(applicationCounts),
+
+                borderWidth: 1
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    display: true
+                },
+
+                title: {
+
+                    display: true,
+
+                    text:
+                        "Industrial Application Distribution"
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    ticks: {
+                        stepSize: 1
+                    },
+
+                    title: {
+
+                        display: true,
+
+                        text:
+                            "Number of Candidate Enzymes"
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   6. SEARCH FUNCTION
+========================================================= */
+
+function searchTable() {
+
+    const input =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const table =
+        document.getElementById("enzymeTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    let visibleRows = 0;
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const rowText =
+            rows[i]
+                .innerText
+                .toLowerCase();
+
+        if (rowText.includes(input)) {
+
+            rows[i].style.display = "";
+
+            visibleRows++;
 
         } else {
 
-            backToTop.style.display = "none";
+            rows[i].style.display = "none";
 
         }
 
-    });
+    }
+
+    updateSearchResultCount(visibleRows);
+
+}
 
 
-    backToTop.addEventListener("click", function () {
+/* =========================================================
+   7. SEARCH RESULT COUNT
+========================================================= */
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+function updateSearchResultCount(count) {
+
+    let resultElement =
+        document.getElementById(
+            "searchResultCount"
+        );
+
+    if (!resultElement) {
+
+        resultElement =
+            document.createElement("p");
+
+        resultElement.id =
+            "searchResultCount";
+
+        resultElement.style.marginTop =
+            "10px";
+
+        resultElement.style.fontWeight =
+            "bold";
+
+        const searchBox =
+            document.querySelector(".search-box");
+
+        if (searchBox) {
+            searchBox.appendChild(resultElement);
+        }
+
+    }
+
+    resultElement.innerText =
+        "Results found: " + count;
+
+}
+
+
+/* =========================================================
+   8. DOWNLOAD RESULTS AS CSV
+========================================================= */
+
+function downloadCSV() {
+
+    const table =
+        document.getElementById(
+            "enzymeTable"
+        );
+
+    if (!table) {
+
+        alert(
+            "Results table not found."
+        );
+
+        return;
+
+    }
+
+    const rows =
+        table.querySelectorAll("tr");
+
+    let csv = [];
+
+    rows.forEach(row => {
+
+        const columns =
+            row.querySelectorAll(
+                "th, td"
+            );
+
+        const rowData = [];
+
+        columns.forEach(column => {
+
+            let value =
+                column.innerText
+                    .replace(/\n/g, " ")
+                    .replace(/,/g, ";")
+                    .trim();
+
+            rowData.push(value);
+
         });
 
+        csv.push(
+            rowData.join(",")
+        );
+
     });
 
+    const csvFile =
+        new Blob(
+            [csv.join("\n")],
+            {
+                type: "text/csv;charset=utf-8;"
+            }
+        );
 
-    /* -----------------------------------------------------
-       Module card interaction
-    ----------------------------------------------------- */
+    const downloadURL =
+        URL.createObjectURL(csvFile);
 
-    const moduleCards = document.querySelectorAll(
-        ".feature-card, .info-card"
+    const link =
+        document.createElement("a");
+
+    link.href =
+        downloadURL;
+
+    link.download =
+        "industrial_enzyme_results.csv";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(
+        downloadURL
     );
 
-    moduleCards.forEach(function (card) {
+}
 
-        card.addEventListener("mouseenter", function () {
 
-            this.style.transform = "translateY(-5px)";
+/* =========================================================
+   9. SMOOTH SCROLLING
+========================================================= */
 
-        });
+document
+    .querySelectorAll("nav a")
+    .forEach(link => {
 
-        card.addEventListener("mouseleave", function () {
+        link.addEventListener(
+            "click",
+            function(event) {
 
-            this.style.transform = "translateY(0)";
+                const targetID =
+                    this.getAttribute("href");
 
-        });
+                const target =
+                    document.querySelector(
+                        targetID
+                    );
+
+                if (target) {
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            }
+        );
 
     });
 
 
-    /* -----------------------------------------------------
-       Console confirmation
-    ----------------------------------------------------- */
+/* =========================================================
+   10. MODULE STATUS MESSAGE
+========================================================= */
+
+function showModuleStatus(
+    moduleName,
+    status
+) {
 
     console.log(
-        "Industrial Enzyme Discovery Pipeline loaded successfully."
+        moduleName +
+        " : " +
+        status
     );
 
-    console.log(
-        "Modules: Genomic Library Construction → Functional Screening → Structural Characterization"
-    );
+}
 
-});
+
+/* =========================================================
+   11. PIPELINE STATUS
+========================================================= */
+
+showModuleStatus(
+    "Module 1",
+    "Genomic library construction completed"
+);
+
+showModuleStatus(
+    "Module 2",
+    "ORF prediction completed"
+);
+
+showModuleStatus(
+    "Module 3",
+    "Functional screening completed"
+);
+
+
+/* =========================================================
+   12. PAGE LOAD MESSAGE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        console.log(
+            "Industrial Enzyme Discovery Pipeline loaded successfully."
+        );
+
+        console.log(
+            "Total candidate enzymes:",
+            enzymeData.length
+        );
+
+    }
+);
